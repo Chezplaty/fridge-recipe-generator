@@ -1,0 +1,67 @@
+# Implementation Plan
+
+- [ ] 1. Build the recipe library and matching logic
+  - [ ] 1.1 Create pre-written recipe data in `backend/recipes.py`
+    - Write 8-10 recipes as Python dicts with `name`, `keywords`, `ingredients`, and `instructions` fields
+    - Keywords should match common Rekognition food labels (e.g. "Egg", "Cheese", "Tomato", "Bread")
+    - _Requirements: 3.1, 3.2, 3.3_
+  - [ ] 1.2 Implement recipe matching function in `backend/recipes.py`
+    - Write a `find_best_recipe(detected_labels)` function that scores each recipe by how many keywords match the detected labels
+    - Return the highest-scoring recipe, or a fallback message if no match
+    - _Requirements: 3.2, 3.4_
+  - [ ]* 1.3 Write unit tests for recipe matching
+    - Test with a known set of labels and verify the correct recipe is returned
+    - Test the fallback case when no labels match
+    - _Requirements: 3.2, 3.4_
+
+- [ ] 2. Implement AWS utility functions
+  - [ ] 2.1 Implement S3 upload helper in `backend/aws_utils.py`
+    - Write `upload_image_to_s3(image_bytes, filename)` using boto3
+    - Generate a UUID-based S3 key to avoid collisions
+    - Return the S3 bucket name and key for use by Rekognition
+    - _Requirements: 1.3, 5.2_
+  - [ ] 2.2 Implement Rekognition label detection in `backend/aws_utils.py`
+    - Write `detect_food_labels(bucket, key)` using boto3 `detect_labels`
+    - Filter results to labels with confidence >= 70%
+    - Return a list of label name strings
+    - _Requirements: 2.2, 2.3, 2.4_
+
+- [ ] 3. Implement the Lambda handler
+  - [ ] 3.1 Wire up the main Lambda handler in `backend/app.py`
+    - Parse the incoming API Gateway event to extract base64 image and filename
+    - Decode the base64 image to bytes
+    - Call `upload_image_to_s3`, then `detect_food_labels`, then `find_best_recipe`
+    - Return a structured JSON response with `ingredients` and `recipe` fields
+    - _Requirements: 2.1, 3.5, 5.2, 5.3_
+  - [ ] 3.2 Add error handling to the Lambda handler
+    - Wrap the handler in try/except blocks
+    - Return 400 for bad input (missing image, unsupported type)
+    - Return 500 for AWS service failures
+    - Always return a JSON body with a consistent shape
+    - _Requirements: 1.4, 2.4, 4.4, 5.4_
+
+- [ ] 4. Build the frontend
+  - [ ] 4.1 Create the HTML structure in `frontend/index.html`
+    - Add a file input (accept JPEG/PNG), a submit button, a loading spinner (hidden by default), and a results section
+    - _Requirements: 1.1, 1.2, 4.1, 4.2, 4.3_
+  - [ ] 4.2 Implement frontend logic in `frontend/script.js`
+    - On submit: validate file type and size (reject >10MB with a message)
+    - Convert the selected file to base64 using `FileReader`
+    - POST JSON `{ image, filename }` to the API Gateway URL
+    - Show loading spinner during the request
+    - On success: render the ingredients list and recipe (name, ingredients, instructions)
+    - On error: display a user-friendly error message
+    - _Requirements: 1.2, 1.4, 1.5, 4.1, 4.2, 4.3, 4.4, 5.1_
+  - [ ] 4.3 Style the page in `frontend/style.css`
+    - Add basic layout styles for the upload form and results section
+    - Style the loading spinner
+    - Make the recipe output readable (clear headings, spaced list items)
+    - _Requirements: 4.1, 4.2_
+
+- [ ] 5. Add project configuration files
+  - [ ] 5.1 Create `backend/requirements.txt` with boto3 dependency
+    - _Requirements: 5.2_
+  - [ ] 5.2 Update `README.md` with setup instructions
+    - Document the required AWS resources (S3 bucket name, Lambda config, API Gateway URL)
+    - Explain how to deploy the Lambda function and set the API URL in the frontend
+    - _Requirements: 5.1, 5.2_
