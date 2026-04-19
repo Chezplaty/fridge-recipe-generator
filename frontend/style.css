@@ -145,6 +145,12 @@ main {
     max-width: 160px;
 }
 
+#file-disclaimer {
+    font-size: 0.75rem;
+    color: #b0cfc4;
+    font-style: italic;
+}
+
 #uploadBut {
     background-color: #7fa898;
     color: #e8f0ec;

@@ -205,3 +205,26 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Lambda deployment artifacts
+backend/function.zip
+
+# Installed Python packages bundled for Lambda
+backend/bin/
+backend/lib/
+backend/lib64/
+backend/share/
+backend/include/
+backend/*.dist-info/
+backend/*.egg-info/
+backend/certifi/
+backend/charset_normalizer/
+backend/idna/
+backend/requests/
+backend/urllib3/
+backend/boto3/
+backend/botocore/
+backend/s3transfer/
+backend/jmespath/
+backend/dateutil/
+backend/six.py
