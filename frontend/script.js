@@ -8,6 +8,14 @@ async function uploadImage() {
         return;
     }
 
+    // reset previous results
+    document.getElementById("recipe-name").textContent = "";
+    document.getElementById("ingredients-output").textContent = "";
+    document.getElementById("instructions-output").textContent = "";
+    const mealThumb = document.getElementById("mealThumb");
+    mealThumb.src = "";
+    mealThumb.classList.add("placeholder");
+
     const reader = new FileReader();
 
     reader.onload = async function () {
