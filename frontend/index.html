@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe AI</title>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+
+    <header>
+        <h1 id="title">Fridge Recipe Generator</h1>
+    </header>
+
+    <main>
+        <div id="panel">
+            <span class="corner top-left"></span>
+            <span class="corner bottom-right"></span>
+
+            <div id="panel-inner">
+
+                <div id="file-import">
+                    <p class="panel-label">File Import</p>
+                    <img id="preview" src="" alt="Preview" />
+                    <div id="controls">
+                        <input type="file" id="imageInput" accept="image/*" />
+                    </div>
+                    <button id="uploadBut" onclick="uploadImage()">Scan</button>
+                </div>
+
+                <div id="arrow">→</div>
+
+                <div id="meal-section">
+                    <p class="panel-label">MEAL</p>
+                    <img id="mealThumb" src="" alt="Meal" class="placeholder" />
+                </div>
+
+            </div>
+        </div>
+
+        <div id="recipe-section">
+            <h2 id="recipe-title">RECIPE: <span id="recipe-name"></span></h2>
+            <div id="book">
+                <div class="page" id="ingredients-page">
+                    <p class="page-label">Ingredients:</p>
+                    <div class="page-content" id="ingredients-output"></div>
+                </div>
+                <div id="spine"></div>
+                <div class="page" id="instructions-page">
+                    <p class="page-label">Instructions:</p>
+                    <div class="page-content" id="instructions-output"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

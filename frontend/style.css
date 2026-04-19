@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #6b9080;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #e8f0ec;
+    min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+    background-color: #7fa898;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+#title {
+    font-size: 3.0rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ── Main ── */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ── Panel ── */
+#panel {
+    background-color: #4e7a68;
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* corner brackets */
+.corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: #e8f0ec;
+    border-style: solid;
+}
+
+.top-left {
+    top: 10px;
+    left: 10px;
+    border-width: 2px 0 0 2px;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-width: 0 2px 2px 0;
+}
+
+/* divider line at top of panel */
+#panel::before {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: #e8f0ec;
+    margin-bottom: 16px;
+}
+
+#panel-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.panel-label {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* ── File Import ── */
+#file-import {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+#panel-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: fit-content;
+}
+
+#preview {
+    display: none;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    background-color: #7fa898;
+    border-radius: 4px;
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+}
+
+#imageInput {
+    font-size: 0.8rem;
+    color: #e8f0ec;
+    max-width: 160px;
+}
+
+#uploadBut {
+    background-color: #7fa898;
+    color: #e8f0ec;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: fit-content;
+}
+
+#uploadBut:hover {
+    background-color: #9dbfb3;
+}
+
+/* ── Arrow ── */
+#arrow {
+    font-size: 1.8rem;
+    align-self: center;
+    padding: 0 8px;
+    margin-top: 28px;
+    flex-shrink: 0;
+}
+
+/* ── Meal Section ── */
+#meal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 1;
+}
+
+#mealThumb {
+    display: none;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    background-color: #7fa898;
+    border-radius: 4px;
+}
+
+/* placeholder box when no meal yet */
+#mealThumb.placeholder {
+    display: block;
+    background-color: #7fa898;
+}
+
+/* ── Recipe Section ── */
+#recipe-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#recipe-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8f0ec;
+}
+
+#book {
+    display: flex;
+    gap: 0;
+    min-height: 400px;
+}
+
+.page {
+    background-color: #ddeee6;
+    flex: 1;
+    padding: 20px 24px;
+    border-radius: 4px;
+}
+
+#ingredients-page {
+    border-radius: 8px 8px 8px 8px;
+}
+
+#instructions-page {
+    border-radius: 8px 8px 8px 8px;
+}
+
+#spine {
+    width: 28px;
+    background-color: #7fa898;
+    flex-shrink: 0;
+    border-radius: 8px 8px 8px 08px;
+}
+
+.page-label {
+    color: #4e7a68;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #a0c4b4;
+}
+
+.page-content {
+    color: #2d4a3e;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#ingredients-output {
+    line-height: 2.2;
+}
+
+#instructions-output {
+    line-height: 1.7;
+}
