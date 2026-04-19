@@ -34,6 +34,29 @@ main {
     gap: 24px;
 }
 
+/* ── Panel Wrapper ── */
+#panel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.mascot {
+    width: 300px;
+    opacity: 0.85;
+    transform: scaleX(-1) scale(1.4);
+}
+
+#mascot-right {
+    transform: scaleX(1) scale(1.4);
+    margin-left: 50px;
+}
+
+#mascot-left {
+    margin-right: 50px;
+}
+
 /* ── Panel ── */
 #panel {
     background-color: #4e7a68;

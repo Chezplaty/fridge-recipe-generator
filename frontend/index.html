@@ -13,29 +13,33 @@
     </header>
 
     <main>
-        <div id="panel">
-            <span class="corner top-left"></span>
-            <span class="corner bottom-right"></span>
+        <div id="panel-wrapper">
+            <img class="mascot" id="mascot-left" src="mascot.png" alt="" />
+            <div id="panel">
+                <span class="corner top-left"></span>
+                <span class="corner bottom-right"></span>
 
-            <div id="panel-inner">
+                <div id="panel-inner">
 
-                <div id="file-import">
-                    <p class="panel-label">File Import</p>
-                    <img id="preview" src="" alt="Preview" />
-                    <div id="controls">
-                        <input type="file" id="imageInput" accept="image/*" />
+                    <div id="file-import">
+                        <p class="panel-label">File Import</p>
+                        <img id="preview" src="" alt="Preview" />
+                        <div id="controls">
+                            <input type="file" id="imageInput" accept="image/*" />
+                        </div>
+                        <button id="uploadBut" onclick="uploadImage()">Scan</button>
                     </div>
-                    <button id="uploadBut" onclick="uploadImage()">Scan</button>
+
+                    <div id="arrow">→</div>
+
+                    <div id="meal-section">
+                        <p class="panel-label">MEAL</p>
+                        <img id="mealThumb" src="" alt="Meal" class="placeholder" />
+                    </div>
+
                 </div>
-
-                <div id="arrow">→</div>
-
-                <div id="meal-section">
-                    <p class="panel-label">MEAL</p>
-                    <img id="mealThumb" src="" alt="Meal" class="placeholder" />
-                </div>
-
             </div>
+            <img class="mascot" id="mascot-right" src="mascot.png" alt="" />
         </div>
 
         <div id="recipe-section">
